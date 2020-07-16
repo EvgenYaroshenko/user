@@ -1,0 +1,4 @@
+# file: ~/.gitignore_global
+.idea
+user-common/target
+user-core/target
