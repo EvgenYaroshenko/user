@@ -23,8 +23,18 @@ public class User implements Serializable {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Column(name = "uuid", updatable = false, nullable = false)
+    @Column(name = "uuid", nullable = false)
     private UUID uuid;
+
+    @Column(name = "user_name", nullable = false)
+    private String userName;
+
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
+
+    @Column(name = "role_id", nullable = false)
+    @Convert(converter = RoleConverter.class)
+    private Role role;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
