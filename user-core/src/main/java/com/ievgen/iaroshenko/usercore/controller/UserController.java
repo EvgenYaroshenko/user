@@ -5,21 +5,20 @@ import com.ievgen.iaroshenko.usercommon.controller.CreateUserRequest;
 import com.ievgen.iaroshenko.usercore.entity.User;
 import com.ievgen.iaroshenko.usercore.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/users")
 @AllArgsConstructor
 public class UserController {
 
 
     private UserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     //TODO refactor exceptions
     public ResponseEntity<User> getUsersById(@PathVariable(value = "id") UUID userId)  {
         User user =
@@ -28,11 +27,9 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    @PostMapping
+    @PostMapping("/users")
     //TODO refactor exceptions
-    public ResponseEntity<User> createUser(CreateUserRequest request)  {
-        User user =
-                userService.save(request);
-        return ResponseEntity.ok().body(user);
+    public User createUser(@RequestBody CreateUserRequest request)  {
+        return userService.save(request);
     }
 }

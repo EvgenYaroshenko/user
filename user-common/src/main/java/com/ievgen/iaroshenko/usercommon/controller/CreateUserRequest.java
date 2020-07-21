@@ -9,4 +9,13 @@ public class CreateUserRequest {
     String firstName;
     @NotNull
     String lastName;
+
+    @NotNull
+    String userName;
+
+    @NotNull
+    String password;
+
+    @NotNull
+    String email;
 }
