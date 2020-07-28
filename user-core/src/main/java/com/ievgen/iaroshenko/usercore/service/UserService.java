@@ -10,4 +10,6 @@ public interface UserService {
     Optional<User> findBydId(UUID id);
 
     User save(CreateUserRequest request);
+
+    User findByUserName(String userName);
 }
